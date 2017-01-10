@@ -1,0 +1,31 @@
+[user]
+	name = Steve McGee
+	email = steve.mcgee@vivintsolar.com
+[alias]
+    amend = commit --amend
+    br = branch
+    ck = checkout
+    ckb = checkout -b
+    cm = commit
+    cmm = commit -m
+    ds = diff --staged -C
+    fa = fetch --all
+    ff = merge --ff-only
+    fu = fetch upstream
+    l = !git lg -10
+    l2 = !git lg -20
+    la = !git lg --all
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    prune-all = !git remote | xargs -n 1 git remote prune $1
+    st = status
+    undo = reset --soft HEAD^
+    standup = "!git lg --since yesterday --author \"$(git config user.name)\" --all"
+    backup = "!git checkout -b backup-$(date +\"%Y-%m-%d_%H-%M-%S\")-$(git symbolic-ref --short HEAD); git checkout -; git lg -4"
+    date = "!git commit --amend --no-verify --no-edit --date=\"$(date)\""
+[core]
+	excludesfile = /Users/steve/.gitignore_global
+	editor = code --wait --new-window
+[diff]
+    tool = default-difftool
+[difftool "default-difftool"]
+    cmd = code --wait --diff $LOCAL $REMOTE
